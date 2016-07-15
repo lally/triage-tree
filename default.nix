@@ -1,16 +1,14 @@
-{ mkDerivation, reflex, reflex-dom, file-embed
+{ mkDerivation, base, reflex, reflex-dom, reflex-dom-contrib
+, stdenv
 }:
-
 mkDerivation {
   pname = "triage-tree";
-  version = "0.1";
-  src = builtins.filterSource (path: type: baseNameOf path != ".git") ./.;
+  version = "0.1.0.0";
+  src = ./.;
+  isLibrary = false;
   isExecutable = true;
-  isLibrary = true;
-  buildDepends = [
-    reflex
-    reflex-dom
-    file-embed
+  executableHaskellDepends = [
+    base reflex reflex-dom reflex-dom-contrib
   ];
-  license = null;
+  license = stdenv.lib.licenses.unfree;
 }
