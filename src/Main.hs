@@ -1,6 +1,7 @@
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Reflex
+import Reflex.Dom
 import Reflex.Dom.Contrib.Widgets.Svg
 
 -- Plans: Show a simple list of strings.  Then get it into an svg
@@ -14,10 +15,11 @@ data Tree = T String [Tree] deriving Show
 leaf s = T s []
 basicList = T "root" ([T "child" [leaf "c1", leaf "c2", leaf "c3"]] ++ ( map leaf ["A", "B", "C"]))
 
+
 childListElem c = svg "ellipse" $ listElem c
 listElem (T str []) = text str
 listElem (T str children) = svg "g" $ do
-   svg "text" str
+   svg "text" $ text str
    mapM_ childListElem children
    return ()
 

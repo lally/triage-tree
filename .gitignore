@@ -17,3 +17,9 @@ cabal.sandbox.config
 *.eventlog
 .stack-work/
 cabal.project.local
+*.js_dyn_hi
+*.js_dyn_o
+*.js_hi
+*.js_o
+*.jsexe/
+
